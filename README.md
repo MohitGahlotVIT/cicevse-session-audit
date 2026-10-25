@@ -182,17 +182,7 @@ the verification path and overwrites the committed result files.
   against a majority-session baseline and a session-by-class contingency table
   because session identity and attack class are strongly confounded.
 
-## Configuration
 
-`configs/experiment_config.yaml` contains the dataset checksum, preparation
-rules, split definitions, model parameters, weighting scheme, and metric
-policy. `configs/run_matrix.csv` enumerates all 40 model/experiment/seed runs.
-
-Every run is also represented by a saved prediction file:
-
-```text
-results/<model>/predictions/E<experiment>_seed<seed>.csv
-```
 
 ## License
 
@@ -202,9 +192,5 @@ dataset remains subject to the terms of its original distribution.
 ## Citation
 
 ```bibtex
-@misc{gahlot2026session,
-  author = {Gahlot, Mohit},
-  title  = {Session Confounding in Host-Based Intrusion Detection for Electric Vehicle Charging Infrastructure: A Protocol Audit of CICEVSE2024},
-  year   = {2026}
-}
+
 ```
