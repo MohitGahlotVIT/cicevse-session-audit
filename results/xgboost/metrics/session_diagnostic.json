@@ -1,0 +1,12 @@
+[
+  {
+    "status": "ok",
+    "n_sessions_modelled": 36,
+    "n_rows": 5080,
+    "session_pred_accuracy": 0.9212598425196851,
+    "majority_session_baseline": 0.484251968503937,
+    "lift_over_baseline": 0.4370078740157481,
+    "frac_single_class_sessions": 0.9722222222222222,
+    "caveat": "session label is confounded with attack class (most sessions contain one class); accuracy cannot be interpreted as pure session-fingerprint leakage"
+  }
+]

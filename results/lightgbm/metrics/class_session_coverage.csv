@@ -1,0 +1,19 @@
+class,n_rows,n_sessions,sessions,eligible_known,probe_only,session0_timeslice
+aggressive-scan,182,3,"[1, 14, 27]",True,False,False
+port-scan,201,3,"[5, 18, 29]",True,False,False
+syn-stealth,189,3,"[9, 23, 31]",True,False,False
+vuln-scan,192,3,"[12, 26, 32]",True,False,False
+service-detection,199,3,"[7, 20, 30]",True,False,False
+backdoor,2302,2,"[34, 35]",True,False,False
+push-ack-flood,127,2,"[6, 19]",True,False,False
+icmp-flood,128,2,"[2, 15]",True,False,False
+os-fingerprinting,123,2,"[4, 17]",True,False,False
+icmp-fragmentation,119,2,"[13, 16]",True,False,False
+syn-flood,126,2,"[8, 21]",True,False,False
+synonymous-ip-flood,122,2,"[22, 33]",True,False,False
+tcp-flood,123,2,"[10, 24]",True,False,False
+udp-flood,120,2,"[11, 25]",True,False,False
+os-scan,59,1,[28],False,True,False
+none,2302,1,[0],False,False,True
+cryptojacking,1793,1,[0],False,False,True
+icmp-fragmentation_old,61,1,[3],False,True,False

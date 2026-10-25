@@ -1,0 +1,96 @@
+dataset:
+  csv_path: data/raw/EVSE-B-HPC-Kernel-Events-Combined.csv
+  expected_sha256: "0025e946bb0c7959752df00df3b516012faabddbde0644577d5fb732963de553"
+  expected_rows: 8474
+  expected_cols: 915
+  expected_repaired_rows: 2302
+  prepared_rows: 8468
+  prepared_classes: 18
+  prepared_features: 308
+  sessions: 36
+
+preparation:
+  merge_serice_into_service: true
+  drop_exact_duplicates_keep_first: true
+  drop_columns:
+    - writeback_flush_foreign
+    - "Unnamed: 911"
+    - "Unnamed: 912"
+    - "Unnamed: 913"
+    - "Unnamed: 914"
+  drop_globally_constant_columns: true
+  max_missing_fraction_row: 0.50
+
+splits:
+  seeds: [42, 0, 1, 2, 3]
+  ratios: [0.60, 0.20, 0.20]
+  random:
+    type: stratified_row
+  session:
+    type: capture_session_disjoint
+    session0_time_slice: [0.60, 0.20, 0.20]
+    two_session_validation: last_20_percent_of_training_session
+    three_session_rotation: seed_mod_3
+    single_session_classes: probe_only
+
+class_weighting:
+  scheme: inverse_frequency
+  formula: "w_c = n_train / (n_classes * count_c_train)"
+  source: training_partition_only
+
+experiments:
+  - {id: E1, protocol: random, weighting: standard}
+  - {id: E2, protocol: random, weighting: inverse_frequency}
+  - {id: E3, protocol: session, weighting: standard}
+  - {id: E4, protocol: session, weighting: inverse_frequency}
+
+models:
+  xgboost:
+    n_estimators: 400
+    max_depth: 6
+    learning_rate: 0.10
+    subsample: 0.80
+    colsample_bytree: 0.80
+    objective: multi:softprob
+    eval_metric: mlogloss
+    tree_method: hist
+    n_jobs: 4
+    early_stopping_rounds: 30
+  lightgbm:
+    n_estimators: 400
+    learning_rate: 0.10
+    max_depth: 6
+    num_leaves: 63
+    min_child_samples: 20
+    objective: multiclass
+    metric: multi_logloss
+    subsample: 0.80
+    subsample_freq: 1
+    colsample_bytree: 0.80
+    reg_lambda: 1.0
+    n_jobs: 4
+    early_stopping_rounds: 30
+
+metrics:
+  primary: macro_f1
+  secondary:
+    - balanced_accuracy
+    - per_class_precision
+    - per_class_recall
+    - per_class_f1
+    - confusion_matrix
+    - accuracy
+    - weighted_f1
+  absent_class_policy: exclude_from_macro_and_record
+
+probe:
+  classes: [os-scan, icmp-fragmentation_old]
+  source_models: [E3, E4]
+  metric: fraction_predicted_attack
+
+session_diagnostic:
+  model: xgboost_small
+  n_estimators: 100
+  max_depth: 4
+  split: within_training_partition
+  baseline: majority_session

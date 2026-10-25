@@ -1,0 +1,16 @@
+,aggressive-scan,backdoor,icmp-flood,icmp-fragmentation,none,os-fingerprinting,port-scan,push-ack-flood,service-detection,syn-flood,syn-stealth,synonymous-ip-flood,tcp-flood,udp-flood,vuln-scan
+aggressive-scan,0,0,0,0,0,57,0,0,0,0,0,0,2,0,0
+backdoor,0,1151,0,0,0,0,0,0,0,0,0,0,0,0,0
+icmp-flood,0,0,60,0,0,0,0,0,0,2,0,4,0,0,1
+icmp-fragmentation,0,0,7,0,0,0,0,0,0,0,0,7,0,0,0
+none,0,0,0,0,0,29,0,0,0,0,0,0,118,670,0
+os-fingerprinting,18,0,0,0,0,0,22,0,0,0,20,0,0,1,0
+port-scan,0,0,2,0,0,50,0,0,0,0,0,0,2,0,0
+push-ack-flood,0,0,0,0,0,0,0,58,0,0,0,3,0,0,0
+service-detection,0,0,0,0,0,58,0,0,0,0,0,0,1,0,0
+syn-flood,0,0,0,0,0,0,0,0,0,50,0,11,1,0,0
+syn-stealth,0,0,0,0,0,54,0,0,0,0,0,0,0,0,0
+synonymous-ip-flood,0,0,0,0,0,0,0,0,0,0,0,0,3,0,0
+tcp-flood,0,0,0,0,0,0,0,0,0,0,0,11,1,0,1
+udp-flood,2,0,0,0,0,0,1,0,0,0,0,55,0,0,2
+vuln-scan,0,0,0,0,0,59,0,0,0,0,0,0,2,0,0
